@@ -1,0 +1,31 @@
+function dotProduct(v1, v2) {
+    if (v1.length !== v2.length) {
+        throw new Error("Vectors must have the same length");
+    }
+
+    let result = 0;
+    for (let i = 0; i < v1.length; i++) {
+        result += v1[i] * v2[i];
+    }
+
+    return result;
+}
+
+function checkOrthogonality(vectors) {
+    for (let [v1, v2] of vectors) {
+        let product = dotProduct(v1, v2);
+        if (product === 0) {
+            console.log(`Vectors ${JSON.stringify(v1)} and ${JSON.stringify(v2)} are orthogonal`);
+        } else {
+            console.log(`Vectors ${JSON.stringify(v1)} and ${JSON.stringify(v2)} are not orthogonal`);
+        }
+    }
+}
+
+// Example usage
+let vectors = [
+    [[1, 2, 3], [4, -8, 4]], // Not orthogonal
+    [[1, 0], [0, 1]]          // Orthogonal
+];
+
+checkOrthogonality(vectors);

@@ -1,0 +1,28 @@
+function sumOfDistinctElements(arr1, arr2) {
+    let sum = 0;
+    
+    let set1 = new Set(arr1);
+    let set2 = new Set(arr2);
+
+    // Sum elements in set1 that are not in set2
+    for (let num of set1) {
+        if (!set2.has(num)) {
+            sum += num;
+        }
+    }
+
+    // Sum elements in set2 that are not in set1
+    for (let num of set2) {
+        if (!set1.has(num)) {
+            sum += num;
+        }
+    }
+
+    return sum;
+}
+
+// Example usage
+let set1 = [3, 1, 7, 9];
+let set2 = [2, 4, 1, 9, 3];
+
+console.log(sumOfDistinctElements(set1, set2));  // Output: 13
